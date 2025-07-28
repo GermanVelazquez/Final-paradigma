@@ -1,4 +1,7 @@
 export class BankService {
+
+  
+  
     getBalance(client: any): number {
       return 1000; // Simulación de saldo
     }

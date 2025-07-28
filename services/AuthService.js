@@ -4,19 +4,16 @@ exports.AuthService = void 0;
 var banckClient_1 = require("../models/banckClient");
 var AuthService = /** @class */ (function () {
     function AuthService() {
+        this.activeClient = null;
     }
-    // Método para registrar un nuevo cliente
-    AuthService.register = function (name, email) {
+    AuthService.prototype.register = function (name, email) {
         var newClient = new banckClient_1.BankClient(name, email);
-        this.clients.push(newClient);
+        console.log("Usuario ".concat(newClient.name, " (").concat(newClient.email, ") registrado y activado."));
         return newClient;
     };
-    // Método para iniciar sesión solo con el email
-    AuthService.login = function (email) {
-        var client = this.clients.find(function (c) { return c.email === email; });
-        return client ? client : null;
+    AuthService.prototype.getCurrentClient = function () {
+        return this.activeClient;
     };
-    AuthService.clients = [];
     return AuthService;
 }());
 exports.AuthService = AuthService;
